@@ -1,0 +1,42 @@
+[
+  {
+    "label": "swift: Build Debug browser-jam",
+    "type": "shell",
+    "command": "swift build --configuration debug",
+    "group": {
+      "kind": "build",
+      "isDefault": true
+    },
+    "problemMatcher": []
+  },
+  {
+    "label": "swift: Build Release browser-jam",
+    "type": "shell",
+    "command": "swift build --configuration release",
+    "group": {
+      "kind": "build",
+      "isDefault": true
+    },
+    "problemMatcher": []
+  },
+  {
+    "label": "swift: Run Debug browser-jam",
+    "type": "shell",
+    "command": "swift run --configuration debug",
+    "group": {
+      "kind": "test",
+      "isDefault": true
+    },
+    "problemMatcher": []
+  },
+  {
+    "label": "swift: Run Release browser-jam",
+    "type": "shell",
+    "command": "swift run --configuration release",
+    "group": {
+      "kind": "test",
+      "isDefault": true
+    },
+    "problemMatcher": []
+  }
+]
