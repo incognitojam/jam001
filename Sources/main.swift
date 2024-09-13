@@ -10,3 +10,5 @@
 // - Render the tree
 // - ???
 // - Profit
+
+print("Hello, world!")
