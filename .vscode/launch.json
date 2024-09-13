@@ -1,24 +1,28 @@
 {
-  "configurations": [
-    {
-      "type": "lldb",
-      "request": "launch",
-      "sourceLanguages": ["swift"],
-      "args": [],
-      "cwd": "${workspaceFolder:browser-jam}",
-      "name": "Debug browser-jam",
-      "program": "${workspaceFolder:browser-jam}\\.build\\debug\\browser-jam.exe",
-      "preLaunchTask": "swift: Build Debug browser-jam"
-    },
-    {
-      "type": "lldb",
-      "request": "launch",
-      "sourceLanguages": ["swift"],
-      "args": [],
-      "cwd": "${workspaceFolder:browser-jam}",
-      "name": "Release browser-jam",
-      "program": "${workspaceFolder:browser-jam}\\.build\\release\\browser-jam.exe",
-      "preLaunchTask": "swift: Build Release browser-jam"
-    }
-  ]
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:browser-jam}",
+            "name": "Debug browser-jam",
+            "program": "${workspaceFolder:browser-jam}\\.build\\debug\\browser-jam.exe",
+            "preLaunchTask": "swift: Build Debug browser-jam"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:browser-jam}",
+            "name": "Release browser-jam",
+            "program": "${workspaceFolder:browser-jam}\\.build\\release\\browser-jam.exe",
+            "preLaunchTask": "swift: Build Release browser-jam"
+        }
+    ]
 }
