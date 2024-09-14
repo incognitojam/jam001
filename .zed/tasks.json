@@ -2,7 +2,7 @@
   {
     "label": "swift: Build BrowserJam",
     "type": "shell",
-    "command": "swift build",
+    "command": "swift build --build-tests",
     "group": {
       "kind": "build",
       "isDefault": true
