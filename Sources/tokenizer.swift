@@ -1,3 +1,5 @@
+import Foundation
+
 enum HTMLToken: Equatable {
     case startTag(String, String)
     case endTag(String)
@@ -81,7 +83,12 @@ struct HTMLTokenizer {
                 }
             } else {
                 // Process text outside of tags
-                let text = try readUntilChar("<")
+                var text = try readUntilChar("<")
+
+                // Replace all blocks of whitespace, including newlines, with a single space
+                text = text.replacingOccurrences(
+                    of: "[ \t\r\n]+", with: " ", options: [.regularExpression])
+
                 if !text.isEmpty {
                     tokens.append(.text(text))
                 }
