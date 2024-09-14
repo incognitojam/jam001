@@ -11,21 +11,14 @@
 // - ???
 // - Profit
 
+import BrowserLib
 import Foundation
 
-struct AppArguments {
-    var path: String
-
-    init() {
-        let defaults = UserDefaults.standard
-        self.path = defaults.string(forKey: "path") ?? "challenge.html"
-    }
-}
-
-let args = AppArguments()
-let html = try FileLoader.load(path: args.path)
+let defaults = UserDefaults.standard
+let path = defaults.string(forKey: "path") ?? "challenge.html"
+let html = try BrowserLib.FileLoader.load(path: path)
 //print(html)
 
-var tokenizer = HTMLTokenizer(input: html)
+var tokenizer = BrowserLib.HTMLTokenizer(input: html)
 let tokens = try tokenizer.tokenise()
 print(tokens)

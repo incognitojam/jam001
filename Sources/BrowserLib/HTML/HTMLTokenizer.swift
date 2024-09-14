@@ -1,12 +1,6 @@
 import Foundation
 
-enum HTMLToken: Equatable {
-    case startTag(String, String)
-    case endTag(String)
-    case text(String)
-}
-
-struct HTMLTokenizer {
+public struct HTMLTokenizer {
     enum HTMLTokenizerError: Swift.Error {
         case unexpectedCharacter(Character)
     }
@@ -14,7 +8,7 @@ struct HTMLTokenizer {
     private let input: String
     private var currentIndex: String.Index
 
-    init(input: String) {
+    public init(input: String) {
         self.input = input
         self.currentIndex = input.startIndex
     }
@@ -51,7 +45,7 @@ struct HTMLTokenizer {
         return try readUntil({ char in char == stopChar })
     }
 
-    mutating func tokenise() throws -> [HTMLToken] {
+    public mutating func tokenise() throws -> [HTMLToken] {
         var tokens: [HTMLToken] = []
         while let char = peek() {
             if char == "<" {
