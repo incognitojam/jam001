@@ -35,7 +35,9 @@ struct HTMLTokenizer {
     }
 
     // Method to consume characters until a condition is met
-    private mutating func readUntil(_ condition: (Character) -> Bool) throws -> String {
+    @discardableResult private mutating func readUntil(_ condition: (Character) -> Bool) throws
+        -> String
+    {
         var result = ""
         while let char = peek(), !condition(char) {
             result.append(char)
@@ -45,8 +47,8 @@ struct HTMLTokenizer {
     }
 
     // Method to consume characters until a given character is found
-    private mutating func readUntilChar(_ stopChar: Character) throws -> String {
-       return try readUntil({ char in char == stopChar })
+    @discardableResult private mutating func readUntilChar(_ stopChar: Character) throws -> String {
+        return try readUntil({ char in char == stopChar })
     }
 
     mutating func tokenise() throws -> [HTMLToken] {
@@ -64,9 +66,9 @@ struct HTMLTokenizer {
                     tokens.append(.endTag(tagName))
                 } else {
                     // This is a start tag
-                    let tagName = try readUntil({ char in char == " " || char == ">" })
-                    if let nextChar = peek(), nextChar == " " {
-                        try advance()  // Skip the ' '
+                    let tagName = try readUntil({ char in char.isWhitespace || char == ">" })
+                    if let nextChar = peek(), nextChar.isWhitespace {
+                        try readUntil({ char in !char.isWhitespace })  // Skip the whitespace
                         let attributes = try readUntilChar(">")
                         try advance()  // Skip the '>'
                         tokens.append(.startTag(tagName, attributes))
@@ -79,6 +81,9 @@ struct HTMLTokenizer {
             } else {
                 // Process text outside of tags
                 var text = try readUntilChar("<")
+
+                // Trim leading and trailing whitespace
+                text = text.trimmingCharacters(in: .whitespacesAndNewlines)
 
                 // Replace all blocks of whitespace, including newlines, with a single space
                 text = text.replacingOccurrences(
