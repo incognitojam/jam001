@@ -34,16 +34,6 @@ struct HTMLTokenizer {
         currentIndex = input.index(after: currentIndex)
     }
 
-    // Method to consume characters until a given character is found
-    private mutating func readUntilChar(_ stopChar: Character) throws -> String {
-        var result = ""
-        while let char = peek(), char != stopChar {
-            result.append(char)
-            try advance()
-        }
-        return result
-    }
-
     // Method to consume characters until a condition is met
     private mutating func readUntil(_ condition: (Character) -> Bool) throws -> String {
         var result = ""
@@ -52,6 +42,11 @@ struct HTMLTokenizer {
             try advance()
         }
         return result
+    }
+
+    // Method to consume characters until a given character is found
+    private mutating func readUntilChar(_ stopChar: Character) throws -> String {
+       return try readUntil({ char in char == stopChar })
     }
 
     mutating func tokenise() throws -> [HTMLToken] {
