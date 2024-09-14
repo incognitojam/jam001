@@ -5,7 +5,7 @@
 // The source is saved in the file `challenge.html` in this repository.
 
 // Code to write:
-// - HTML parser
+// - HTML tokenizer and parser (construct tree)
 // - Create window/OpenGL context
 // - Render the tree
 // - ???
@@ -43,11 +43,31 @@ struct AppArguments {
     }
 }
 
-let args = AppArguments()
-
-do {
-    let html = try FileLoader.load(path: args.path)
-    print(html)
-} catch {
-    print("Error: \(error)")
+enum Token: Equatable {
+    case startTag(String)
+    case endTag(String)
+    case character(Character)
 }
+
+struct Tokenizer {
+    private let source: String
+    private var index: String.Index
+
+    init(source: String) {
+        self.source = source
+        self.index = source.startIndex
+    }
+
+    private func peek() -> Character? {
+        return self.source[self.index]
+    }
+    private mutating func take() -> Character? {
+        let character = self.source[self.index]
+        self.index = self.source.index(after: self.index)
+        return character
+    }
+}
+
+let args = AppArguments()
+let html = try FileLoader.load(path: args.path)
+print(html)
