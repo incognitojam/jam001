@@ -10,6 +10,16 @@
     "problemMatcher": []
   },
   {
+    "label": "swift: Test BrowserLib",
+    "type": "shell",
+    "command": "swift test",
+    "group": {
+      "kind": "test",
+      "isDefault": true
+    },
+    "problemMatcher": []
+  },
+  {
     "label": "swift: Run BrowserJam",
     "type": "shell",
     "command": "swift run",
