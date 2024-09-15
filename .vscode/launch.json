@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "swift-lldb",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:browser-jam}",
+            "name": "Debug BrowserJam",
+            "program": "${workspaceFolder:browser-jam}/.build/debug/BrowserJam",
+            "preLaunchTask": "swift: Build Debug BrowserJam"
+        },
+        {
+            "type": "swift-lldb",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:browser-jam}",
+            "name": "Release BrowserJam",
+            "program": "${workspaceFolder:browser-jam}/.build/release/BrowserJam",
+            "preLaunchTask": "swift: Build Release BrowserJam"
+        }
+    ]
+}
