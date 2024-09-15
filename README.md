@@ -35,7 +35,7 @@ Uses Swift 6.0 snapshot
 ## Ubuntu / WSL2
 
 ```sh
-apt install libglfw3-dev libglfw3
+sudo apt install libglfw3-dev libglfw3 xorg-dev
 ```
 
 ### Troubleshooting
@@ -44,6 +44,6 @@ apt install libglfw3-dev libglfw3
 
 Install latest stable Mesa drivers
 ```sh
-add-apt-repository ppa:kisak/kisak-mesa
-apt upgrade
+sudo add-apt-repository ppa:kisak/kisak-mesa
+sudo apt upgrade
 ```
