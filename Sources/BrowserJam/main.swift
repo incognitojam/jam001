@@ -26,3 +26,6 @@ let tokens = try tokenizer.tokenize()
 var parser = BrowserLib.HTMLParser(tokens: tokens)
 let tree = try parser.parse()
 print("Tree: \(tree)")
+
+let app = try BrowserLib.Application()
+try app.start()

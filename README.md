@@ -31,3 +31,19 @@ Tree: HTMLDocument(root:
 # Build
 
 Uses Swift 6.0 snapshot
+
+## Ubuntu / WSL2
+
+```sh
+apt install libglfw3-dev libglfw3
+```
+
+### Troubleshooting
+
+**MESA: error: ZINK: failed to choose pdev**
+
+Install latest stable Mesa drivers
+```sh
+add-apt-repository ppa:kisak/kisak-mesa
+apt upgrade
+```
