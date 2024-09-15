@@ -16,7 +16,7 @@ import Foundation
 
 let defaults = UserDefaults.standard
 let path = defaults.string(forKey: "path") ?? "challenge.html"
-let html = try BrowserLib.FileLoader.load(path: path)
+let html = try String(contentsOfFile: "challenge.html", encoding: .utf8)
 //print(html)
 
 var tokenizer = BrowserLib.HTMLTokenizer(input: html)
