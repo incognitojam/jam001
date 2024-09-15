@@ -24,9 +24,10 @@ let package = Package(
             name: "BrowserLib",
             dependencies: ["SwiftMath", .product(name: "SwiftGLFW", package: "SwiftGLFW")],
             cSettings: [
+                .define("GL_GLEXT_PROTOTYPES"),
                 .define(
                     "GL_SILENCE_DEPRECATION",
-                    .when(platforms: [.macOS]))
+                    .when(platforms: [.macOS])),
             ]),
         .testTarget(
             name: "BrowserLibTests",

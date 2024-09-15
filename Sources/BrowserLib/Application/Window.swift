@@ -24,8 +24,7 @@ class Window {
             print("GLFW error: \(error)")
         }
 
-        // macOS's OpenGL implementation requires some extra tweaking
-        GLFWWindow.hints.contextVersion = (4, 1)
+        GLFWWindow.hints.contextVersion = (3, 3)
         GLFWWindow.hints.openGLProfile = .core
         GLFWWindow.hints.openGLCompatibility = .forward
 
@@ -34,9 +33,6 @@ class Window {
 
         // Make the window's context current
         window.context.makeCurrent()
-
-        // Set the background color to black
-        glClearColor(0, 0, 0, 1)
 
         // Set the viewport to cover the entire window
         glViewport(0, 0, GLsizei(width), GLsizei(height))
