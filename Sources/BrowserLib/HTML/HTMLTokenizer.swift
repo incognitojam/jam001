@@ -45,7 +45,7 @@ public struct HTMLTokenizer {
         return try readUntil({ char in char == stopChar })
     }
 
-    public mutating func tokenise() throws -> [HTMLToken] {
+    public mutating func tokenize() throws -> [HTMLToken] {
         var tokens: [HTMLToken] = []
         while let char = peek() {
             if char == "<" {

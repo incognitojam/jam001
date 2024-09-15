@@ -20,5 +20,9 @@ let html = try BrowserLib.FileLoader.load(path: path)
 //print(html)
 
 var tokenizer = BrowserLib.HTMLTokenizer(input: html)
-let tokens = try tokenizer.tokenise()
-print(tokens)
+let tokens = try tokenizer.tokenize()
+//print("Tokens: \(tokens)")
+
+var parser = BrowserLib.HTMLParser(tokens: tokens)
+let tree = try parser.parse()
+print("Tree: \(tree)")

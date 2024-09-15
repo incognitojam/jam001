@@ -45,6 +45,30 @@
             "name": "Release browser-jam",
             "program": "${workspaceFolder:browser-jam}\\.build\\release\\browser-jam.exe",
             "preLaunchTask": "swift: Build Release browser-jam"
+        },
+        {
+            "type": "swift-lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:browser-jam}",
+            "name": "Debug BrowserJam",
+            "program": "${workspaceFolder:browser-jam}\\.build\\debug\\BrowserJam.exe",
+            "preLaunchTask": "swift: Build Debug BrowserJam"
+        },
+        {
+            "type": "swift-lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:browser-jam}",
+            "name": "Release BrowserJam",
+            "program": "${workspaceFolder:browser-jam}\\.build\\release\\BrowserJam.exe",
+            "preLaunchTask": "swift: Build Release BrowserJam"
         }
     ]
 }
