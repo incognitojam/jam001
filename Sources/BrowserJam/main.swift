@@ -27,5 +27,11 @@ var parser = BrowserLib.HTMLParser(tokens: tokens)
 let tree = try parser.parse()
 print("Tree: \(tree)")
 
+// Check CI environment variable
+if ProcessInfo.processInfo.environment["CI"] != nil {
+    print("CI environment detected")
+    exit(0)
+}
+
 let app = try BrowserLib.Application()
 try app.start()
