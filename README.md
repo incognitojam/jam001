@@ -27,3 +27,7 @@ Tree: HTMLDocument(root:
 
 - [x] ignore extraneous </A> closing tag
 - [ ] close unclosed tags (random <P>)
+
+# Build
+
+Uses Swift 6.0 snapshot
