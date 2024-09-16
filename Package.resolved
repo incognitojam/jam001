@@ -1,15 +1,6 @@
 {
-  "originHash" : "572e09fb3a3e47ff3c4db23cc37ce152aa16176baa87ac802c1e86ca6e522c95",
+  "originHash" : "a6a2be23fa4a023c6c329e02279b91fba5f601b893ab7afebe3d0dc722e1747b",
   "pins" : [
-    {
-      "identity" : "cglfw3",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/incognitojam/CGLFW3.git",
-      "state" : {
-        "branch" : "main",
-        "revision" : "bf3413311e5b68872f07b75e0f6453fa7ac62a92"
-      }
-    },
     {
       "identity" : "swift-syntax",
       "kind" : "remoteSourceControl",
@@ -26,24 +17,6 @@
       "state" : {
         "branch" : "main",
         "revision" : "22d6c7677acaa9f564a8a3872243ba7953e134ff"
-      }
-    },
-    {
-      "identity" : "swiftglfw",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/incognitojam/SwiftGLFW.git",
-      "state" : {
-        "branch" : "main",
-        "revision" : "b0a5935611ab7a2441edad0b28b278300ac26e67"
-      }
-    },
-    {
-      "identity" : "swiftmath",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SwiftGFX/SwiftMath",
-      "state" : {
-        "revision" : "13a224a655cbef1ef0e39d7d22e31a4ff6bc9937",
-        "version" : "3.3.1"
       }
     }
   ],
