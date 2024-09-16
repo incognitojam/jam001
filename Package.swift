@@ -27,7 +27,8 @@ let package = Package(
                 ])
             ]),
         .target(
-            name: "BrowserLib"),
+            name: "BrowserLib",
+            dependencies: ["Raylib"]),
         .testTarget(
             name: "BrowserLibTests",
             dependencies: ["BrowserLib", .product(name: "Testing", package: "swift-testing")]),

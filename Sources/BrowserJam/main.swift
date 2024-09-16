@@ -26,7 +26,11 @@ let tokens = try tokenizer.tokenize()
 
 var parser = BrowserLib.HTMLParser(tokens: tokens)
 let tree = try parser.parse()
-print("Tree: \(tree)")
+// print("Tree: \(tree)")
+
+let layoutEngine = BrowserLib.LayoutEngine()
+let layout = layoutEngine.layout(node: tree.root, in: BrowserLib.LayoutContext(y: 0))
+print("Layout: \(layout)")
 
 // Check CI environment variable
 if ProcessInfo.processInfo.environment["CI"] != nil {
@@ -36,15 +40,31 @@ if ProcessInfo.processInfo.environment["CI"] != nil {
 
 let LIGHTGRAY = Color(r: 200, g: 200, b: 200, a: 255)
 let RAYWHITE = Color(r: 245, g: 245, b: 245, a: 255)
+let RED = Color(r: 255, g: 0, b: 0, a: 255)
+let BLACK = Color(r: 0, g: 0, b: 0, a: 255)
 
 InitWindow(800, 450, "Jam Browser")
 
 SetTargetFPS(60)
 
+let renderer = BrowserLib.Renderer()
+let font = GetFontDefault()
+print("Font: \(font)")
+
 while !WindowShouldClose() {
     BeginDrawing()
     ClearBackground(RAYWHITE)
-    DrawText("Hello, world!", 190, 200, 20, LIGHTGRAY)
+    // DrawText("Hello, world!", 190, 200, 20, LIGHTGRAY)
+
+    renderer.render(layout: layout).forEach { command in
+        switch command {
+        case .drawRect(let x, let y, let width, let height):
+            DrawRectangleLines(Int32(x), Int32(y), Int32(width), Int32(height), RED)
+        case .drawText(let x, let y, let text):
+            DrawText(text, Int32(x), Int32(y), Int32(font.baseSize), BLACK)
+        }
+    }
+
     EndDrawing()
 }
 
