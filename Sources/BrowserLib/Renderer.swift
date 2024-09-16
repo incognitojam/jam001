@@ -12,13 +12,14 @@ public struct Renderer {
 
         switch layout.node {
         case .element(_, _, _):
-            commands.append(.drawRect(x: 0, y: layout.y, width: 100, height: layout.height))
+            commands.append(
+                .drawRect(x: layout.x, y: layout.y, width: layout.width, height: layout.height))
             for child in layout.children {
                 commands += render(layout: child)
             }
 
         case .text(let text):
-            commands.append(.drawText(x: 0, y: layout.y, text: text))
+            commands.append(.drawText(x: layout.x, y: layout.y, text: text))
         }
 
         return commands
