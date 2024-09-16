@@ -1,0 +1,4 @@
+module Raylib {
+    header "stub.h"
+    export *
+}

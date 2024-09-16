@@ -13,6 +13,10 @@
 
 import BrowserLib
 import Foundation
+import Raylib
+
+let LIGHTGRAY = Color(r: 200, g: 200, b: 200, a: 255)
+let RAYWHITE = Color(r: 245, g: 245, b: 245, a: 255)
 
 let defaults = UserDefaults.standard
 let path = defaults.string(forKey: "path") ?? "challenge.html"
@@ -33,5 +37,19 @@ if ProcessInfo.processInfo.environment["CI"] != nil {
     exit(0)
 }
 
-let app = try BrowserLib.Application()
-try app.start()
+// let app = try BrowserLib.Application()
+// try app.start()
+
+// Initialize raylib
+InitWindow(800, 450, "raylib [core] example - basic window")
+
+SetTargetFPS(60)  // Set our game to run at 60 frames-per-second
+
+while !WindowShouldClose() {  // Detect window close button or ESC key
+    BeginDrawing()
+    ClearBackground(RAYWHITE)
+    DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY)
+    EndDrawing()
+}
+
+CloseWindow()  // Close window and OpenGL context

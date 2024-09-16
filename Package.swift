@@ -21,8 +21,18 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
+            name: "Raylib", publicHeadersPath: "raylib-5.0_linux_amd64/include",
+            linkerSettings: [
+                .unsafeFlags([
+                    "-L", "Sources/Raylib/raylib-5.0_linux_amd64/include", "-Xlinker",
+                    "Sources/Raylib/raylib-5.0_linux_amd64/lib/libraylib.a", "-Xlinker", "-lm",
+                ])
+            ]),
+        .target(
             name: "BrowserLib",
-            dependencies: ["SwiftMath", .product(name: "SwiftGLFW", package: "SwiftGLFW")],
+            dependencies: [
+                "SwiftMath", "OpenGL", .product(name: "SwiftGLFW", package: "SwiftGLFW"),
+            ],
             cSettings: [
                 .define("GL_GLEXT_PROTOTYPES"),
                 .define(
@@ -32,7 +42,7 @@ let package = Package(
         .testTarget(
             name: "BrowserLibTests",
             dependencies: ["BrowserLib", .product(name: "Testing", package: "swift-testing")]),
-        .executableTarget(name: "BrowserJam", dependencies: ["BrowserLib"]),
+        .executableTarget(name: "BrowserJam", dependencies: ["BrowserLib", "Raylib"]),
     ]
 )
 
