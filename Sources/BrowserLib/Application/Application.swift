@@ -17,9 +17,9 @@ public class Application {
             -0.5, -0.5, 0.0,  // Bottom Left
             -0.5, 0.5, 0.0,  // Top Left
         ]
-        var indices: [GLuint] = [  // Note that we start from 0!
-            0, 1, 3,  // First Triangle
-            1, 2, 3,  // Second Triangle
+        var indices: [GLuint] = [
+            0, 1, 3,
+            1, 2, 3,
         ]
 
         /* Vertex Buffer Object (VBO) */
