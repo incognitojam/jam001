@@ -18,11 +18,11 @@ import Raylib
 let defaults = UserDefaults.standard
 let path = defaults.string(forKey: "path") ?? "challenge.html"
 let html = try String(contentsOfFile: "challenge.html", encoding: .utf8)
-//print(html)
+// print(html)
 
 var tokenizer = BrowserLib.HTMLTokenizer(input: html)
 let tokens = try tokenizer.tokenize()
-//print("Tokens: \(tokens)")
+// print("Tokens: \(tokens)")
 
 var parser = BrowserLib.HTMLParser(tokens: tokens)
 let tree = try parser.parse()

@@ -15,8 +15,6 @@ public struct HTMLParser {
         stack.append((.element("HTML", attributes: "", children: []), "HTML"))
 
         while let token = tokens.next() {
-            print("Token: \(token)")
-
             switch token {
             case .startTag(let tagName, let attributes):
                 // Create a new element node and push it onto the stack
@@ -68,9 +66,6 @@ public struct HTMLParser {
                     )
                 }
             }
-
-            print("Out Stack: \(stack)")
-            print()
         }
 
         if stack.count > 1 {
