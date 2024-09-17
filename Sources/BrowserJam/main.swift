@@ -42,6 +42,7 @@ let RAYWHITE = Color(r: 245, g: 245, b: 245, a: 255)
 let RED = Color(r: 255, g: 0, b: 0, a: 255)
 let BLACK = Color(r: 0, g: 0, b: 0, a: 255)
 
+SetConfigFlags(UInt32(FLAG_WINDOW_RESIZABLE.rawValue))
 InitWindow(800, 450, "Jam Browser")
 SetTargetFPS(60)
 
