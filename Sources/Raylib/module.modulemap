@@ -1,4 +1,4 @@
 module Raylib {
-    header "stub.h"
+    header "include/raylib.h"
     export *
 }
