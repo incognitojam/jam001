@@ -56,7 +56,7 @@ public struct HTMLParser {
             case .text(let text):
                 // Create a text node and add it to the current node on the stack
                 let node = HTMLNode.text(text)
-                if var (currentNode, tagName) = stack.last,
+                if var (currentNode, _) = stack.last,
                     case var .element(currentTagName, currentAttributes, currentChildren) =
                         currentNode
                 {
