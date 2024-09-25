@@ -28,7 +28,16 @@ var parser = BrowserLib.HTMLParser(tokens: tokens)
 let tree = try parser.parse()
 print("Tree: \(tree)")
 
-let layoutEngine = BrowserLib.LayoutEngine()
+SetTraceLogLevel(LOG_DEBUG.rawValue)
+let font = LoadFontEx("Resources/Fonts/JacquardaBastarda9-Regular.ttf", 32, nil, 95)
+if font == nil {
+    print("Failed to load font")
+    exit(1)
+} else {
+    print("Loaded font")
+}
+print("font: \(font)")
+let layoutEngine = BrowserLib.LayoutEngine(font)
 let renderer = BrowserLib.Renderer()
 
 // Check CI environment variable
@@ -49,10 +58,12 @@ SetTargetFPS(60)
 var layoutContext = BrowserLib.LayoutContext(screenWidth: Float(GetRenderWidth()))
 var layout = layoutEngine.layout(node: tree.root, in: layoutContext)
 
-let font = GetFontDefault()
+print("a")
 var renderCommands = renderer.render(layout: layout)
+print("b")
 
 while !WindowShouldClose() {
+    print("running")
     BeginDrawing()
     ClearBackground(RAYWHITE)
 
@@ -74,5 +85,7 @@ while !WindowShouldClose() {
 
     EndDrawing()
 }
+
+print("done")
 
 CloseWindow()
