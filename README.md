@@ -25,8 +25,8 @@ Tree: HTMLDocument(root:
 
 ## Parser TODO
 
-- [x] ignore extraneous </A> closing tag
-- [ ] close unclosed tags (random <P>)
+- [x] ignore extraneous `</A>` closing tag
+- [ ] close unclosed tags (random `<P>`)
 
 # Build
 
