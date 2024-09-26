@@ -49,9 +49,7 @@ public struct LayoutEngine {
 
         case .text(let text):
             let height = text.withCString {
-                let bounds = MeasureTextEx(font, $0, 24, 1)
-                print("\(text) bounds: \(bounds)")
-                return bounds.y
+                MeasureTextEx(font, $0, 24, 1).y
             }
             return LayoutBox(
                 node: node, children: [], x: 0, y: context.y,
