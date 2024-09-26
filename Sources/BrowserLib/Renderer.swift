@@ -12,8 +12,9 @@ public struct Renderer {
 
         switch layout.node {
         case .element(_, _, _):
-            commands.append(
-                .drawRect(x: layout.x, y: layout.y, width: layout.width, height: layout.height))
+            // Outline
+            // commands.append(
+            //     .drawRect(x: layout.x, y: layout.y, width: layout.width, height: layout.height))
             for child in layout.children {
                 commands += render(layout: child)
             }

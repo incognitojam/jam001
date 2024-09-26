@@ -46,6 +46,7 @@ let LIGHTGRAY = Color(r: 200, g: 200, b: 200, a: 255)
 let RAYWHITE = Color(r: 245, g: 245, b: 245, a: 255)
 let RED = Color(r: 255, g: 0, b: 0, a: 255)
 let BLACK = Color(r: 0, g: 0, b: 0, a: 255)
+let BACKGROUND = Color(r: 255, g: 237, b: 189, a: 255)
 
 var layoutContext = BrowserLib.LayoutContext(screenWidth: Float(GetRenderWidth()))
 var layout = layoutEngine.layout(node: tree.root, in: layoutContext)
@@ -54,7 +55,7 @@ var renderCommands = renderer.render(layout: layout)
 
 while !WindowShouldClose() {
     BeginDrawing()
-    ClearBackground(RAYWHITE)
+    ClearBackground(BACKGROUND)
 
     if Float(GetRenderWidth()) != layoutContext.screenWidth {
         layoutContext = layoutContext.with(screenWidth: Float(GetRenderWidth()))
