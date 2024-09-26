@@ -39,7 +39,6 @@ InitWindow(800, 450, "Jam Browser")
 SetTargetFPS(60)
 
 let font = LoadFontEx("Resources/Fonts/times.ttf", 32, nil, 95)
-print("font: \(font)")
 let layoutEngine = BrowserLib.LayoutEngine(font)
 let renderer = BrowserLib.Renderer()
 
