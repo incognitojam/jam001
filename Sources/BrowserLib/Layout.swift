@@ -1,5 +1,6 @@
 import Raylib
 
+// TODO: inline vs block layout?
 // TODO: support x positioning/width
 public struct LayoutContext {
     public let screenWidth: Float
