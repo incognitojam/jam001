@@ -28,28 +28,28 @@ var parser = BrowserLib.HTMLParser(tokens: tokens)
 let tree = try parser.parse()
 print("Tree: \(tree)")
 
-let layoutEngine = BrowserLib.LayoutEngine()
-let renderer = BrowserLib.Renderer()
-
 // Check CI environment variable
 if ProcessInfo.processInfo.environment["CI"] != nil {
     print("CI environment detected")
     exit(0)
 }
 
+SetConfigFlags(UInt32(FLAG_WINDOW_RESIZABLE.rawValue))
+InitWindow(800, 450, "Jam Browser")
+SetTargetFPS(60)
+
+let font = LoadFontEx("Resources/Fonts/times.ttf", 32, nil, 95)
+let layoutEngine = BrowserLib.LayoutEngine(font)
+let renderer = BrowserLib.Renderer()
+
 let LIGHTGRAY = Color(r: 200, g: 200, b: 200, a: 255)
 let RAYWHITE = Color(r: 245, g: 245, b: 245, a: 255)
 let RED = Color(r: 255, g: 0, b: 0, a: 255)
 let BLACK = Color(r: 0, g: 0, b: 0, a: 255)
 
-SetConfigFlags(UInt32(FLAG_WINDOW_RESIZABLE.rawValue))
-InitWindow(800, 450, "Jam Browser")
-SetTargetFPS(60)
-
 var layoutContext = BrowserLib.LayoutContext(screenWidth: Float(GetRenderWidth()))
 var layout = layoutEngine.layout(node: tree.root, in: layoutContext)
 
-let font = GetFontDefault()
 var renderCommands = renderer.render(layout: layout)
 
 while !WindowShouldClose() {
@@ -68,7 +68,7 @@ while !WindowShouldClose() {
         case .drawRect(let x, let y, let width, let height):
             DrawRectangleLines(Int32(x), Int32(y), Int32(width), Int32(height), RED)
         case .drawText(let x, let y, let text):
-            DrawText(text, Int32(x), Int32(y), Int32(font.baseSize), BLACK)
+            DrawTextEx(font, text, Vector2(x: x, y: y), Float(font.baseSize), 1.0, BLACK)
         }
     }
 

@@ -1,5 +1,6 @@
 import Raylib
 
+// TODO: inline vs block layout?
 // TODO: support x positioning/width
 public struct LayoutContext {
     public let screenWidth: Float
@@ -26,7 +27,10 @@ public struct LayoutBox {
 }
 
 public struct LayoutEngine {
-    public init() {
+    let font: Font
+
+    public init(_ font: Font) {
+        self.font = font
     }
 
     /// Traverse the HTML tree and generate the layout tree
@@ -44,15 +48,10 @@ public struct LayoutEngine {
                 node: node, children: childrenLayout, x: 0, y: context.y,
                 width: context.screenWidth, height: height)
 
-        case .text(_):
-            // FIXME: measure text (seems to be broken)
-            // let font = GetFontDefault()
-            // let height = text.withCString {
-            //     let bounds = MeasureTextEx(font, $0, 24, 1)
-            //     print("\(text) bounds: \(bounds)")
-            //     return bounds.y
-            // }
-            let height: Float = 10  // default font
+        case .text(let text):
+            let height = text.withCString {
+                MeasureTextEx(font, $0, 24, 1).y
+            }
             return LayoutBox(
                 node: node, children: [], x: 0, y: context.y,
                 width: context.screenWidth, height: height)
